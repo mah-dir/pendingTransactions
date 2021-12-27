@@ -72,8 +72,7 @@ func main() {
 			tx, _, err := ethclient.TransactionByHash(context.Background(), h)
 
 			if err != nil {
-				// fmt.Println("https://etherscan.io/tx/" + h.String())
-				// log.Fatal("failed to get transaction ", err)
+				// problem with getting the transaction diffrent nonces?
 				continue
 			}
 
@@ -82,8 +81,6 @@ func main() {
 			if err != nil {
 				log.Fatal("failed to get from address ", err)
 			}
-
-			// printTxDetails(msg.From().String(), tx.To().String(), tx.Value().String())
 
 			if *from != "" && common.HexToAddress(*from) == msg.From() {
 				printTxDetails(msg.From().String(), tx.To().String(), tx.Value().String())
